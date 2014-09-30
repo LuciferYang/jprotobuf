@@ -47,48 +47,48 @@ public class ProtobufIDLProxy {
     private static final String DEFAULT_FILE_NAME = "jprotobuf_autogenerate";
     
     
-    private static final Map<String, FieldType> typeMapping;
+    private static final Map<String, FieldType> TYPE_MAPPING;
     
-    private static final Map<String, String> fieldTypeMapping;
+    private static final Map<String, String> FIELD_TYPE_MAPPING;
     
     static {
         
-        typeMapping = new HashMap<String, FieldType>();
+        TYPE_MAPPING = new HashMap<String, FieldType>();
         
-        typeMapping.put("double", FieldType.DOUBLE);
-        typeMapping.put("float", FieldType.FLOAT);
-        typeMapping.put("int64", FieldType.INT64);
-        typeMapping.put("uint64", FieldType.UINT64);
-        typeMapping.put("int32", FieldType.INT32);
-        typeMapping.put("fixed64", FieldType.FIXED64);
-        typeMapping.put("fixed32", FieldType.FIXED32);
-        typeMapping.put("bool", FieldType.BOOL);
-        typeMapping.put("string", FieldType.STRING);
-        typeMapping.put("bytes", FieldType.BYTES);
-        typeMapping.put("uint32", FieldType.UINT32);
-        typeMapping.put("sfixed32", FieldType.SFIXED32);
-        typeMapping.put("sfixed64", FieldType.SFIXED64);
-        typeMapping.put("sint64", FieldType.SINT64);
-        typeMapping.put("sint32", FieldType.SINT32);
+        TYPE_MAPPING.put("double", FieldType.DOUBLE);
+        TYPE_MAPPING.put("float", FieldType.FLOAT);
+        TYPE_MAPPING.put("int64", FieldType.INT64);
+        TYPE_MAPPING.put("uint64", FieldType.UINT64);
+        TYPE_MAPPING.put("int32", FieldType.INT32);
+        TYPE_MAPPING.put("fixed64", FieldType.FIXED64);
+        TYPE_MAPPING.put("fixed32", FieldType.FIXED32);
+        TYPE_MAPPING.put("bool", FieldType.BOOL);
+        TYPE_MAPPING.put("string", FieldType.STRING);
+        TYPE_MAPPING.put("bytes", FieldType.BYTES);
+        TYPE_MAPPING.put("uint32", FieldType.UINT32);
+        TYPE_MAPPING.put("sfixed32", FieldType.SFIXED32);
+        TYPE_MAPPING.put("sfixed64", FieldType.SFIXED64);
+        TYPE_MAPPING.put("sint64", FieldType.SINT64);
+        TYPE_MAPPING.put("sint32", FieldType.SINT32);
         
         
-        fieldTypeMapping = new HashMap<String, String>();
+        FIELD_TYPE_MAPPING = new HashMap<String, String>();
         
-        fieldTypeMapping.put("double", "FieldType.DOUBLE");
-        fieldTypeMapping.put("float", "FieldType.FLOAT");
-        fieldTypeMapping.put("int64", "FieldType.INT64");
-        fieldTypeMapping.put("uint64", "FieldType.UINT64");
-        fieldTypeMapping.put("int32", "FieldType.INT32");
-        fieldTypeMapping.put("fixed64", "FieldType.FIXED64");
-        fieldTypeMapping.put("fixed32", "FieldType.FIXED32");
-        fieldTypeMapping.put("bool", "FieldType.BOOL");
-        fieldTypeMapping.put("string", "FieldType.STRING");
-        fieldTypeMapping.put("bytes", "FieldType.BYTES");
-        fieldTypeMapping.put("uint32", "FieldType.UINT32");
-        fieldTypeMapping.put("sfixed32", "FieldType.SFIXED32");
-        fieldTypeMapping.put("sfixed64", "FieldType.SFIXED64");
-        fieldTypeMapping.put("sint64", "FieldType.SINT64");
-        fieldTypeMapping.put("sint32", "FieldType.SINT32");
+        FIELD_TYPE_MAPPING.put("double", "FieldType.DOUBLE");
+        FIELD_TYPE_MAPPING.put("float", "FieldType.FLOAT");
+        FIELD_TYPE_MAPPING.put("int64", "FieldType.INT64");
+        FIELD_TYPE_MAPPING.put("uint64", "FieldType.UINT64");
+        FIELD_TYPE_MAPPING.put("int32", "FieldType.INT32");
+        FIELD_TYPE_MAPPING.put("fixed64", "FieldType.FIXED64");
+        FIELD_TYPE_MAPPING.put("fixed32", "FieldType.FIXED32");
+        FIELD_TYPE_MAPPING.put("bool", "FieldType.BOOL");
+        FIELD_TYPE_MAPPING.put("string", "FieldType.STRING");
+        FIELD_TYPE_MAPPING.put("bytes", "FieldType.BYTES");
+        FIELD_TYPE_MAPPING.put("uint32", "FieldType.UINT32");
+        FIELD_TYPE_MAPPING.put("sfixed32", "FieldType.SFIXED32");
+        FIELD_TYPE_MAPPING.put("sfixed64", "FieldType.SFIXED64");
+        FIELD_TYPE_MAPPING.put("sint64", "FieldType.SINT64");
+        FIELD_TYPE_MAPPING.put("sint32", "FieldType.SINT32");
     }
     
     
@@ -174,7 +174,7 @@ public class ProtobufIDLProxy {
         for (Field field : fields) {
             // define annotation
             code.append("@").append(Protobuf.class.getSimpleName()).append("(");
-            code.append("fieldType=").append(fieldTypeMapping.get(field.getType()));
+            code.append("fieldType=").append(FIELD_TYPE_MAPPING.get(field.getType()));
             code.append(", order=").append(field.getTag());
             if (Label.OPTIONAL == field.getLabel()) {
                 code.append(", required=false");
@@ -184,7 +184,7 @@ public class ProtobufIDLProxy {
             code.append(")\n");
             
             // define field
-            code.append("public ").append(typeMapping.get(field.getType()).getJavaType());
+            code.append("public ").append(TYPE_MAPPING.get(field.getType()).getJavaType());
             code.append(" ").append(field.getName()).append(CODE_END);
         }
         
