@@ -75,8 +75,9 @@ public class IDLProxyObject {
         }
         Object object = codec.decode(bb);
         Field[] fields = object.getClass().getFields();
-        if (fields == null) {
-            return Collections.emptyMap();
+        
+        if (fields.length==0) {
+            return Collections.<String, Object>emptyMap();
         }
         Map<String, Object> ret = new HashMap<String, Object>();
         for (Field field : fields) {
