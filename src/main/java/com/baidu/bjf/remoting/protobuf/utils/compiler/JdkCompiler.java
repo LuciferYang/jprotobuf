@@ -218,8 +218,9 @@ public class JdkCompiler extends AbstractCompiler {
         @Override
         public FileObject getFileForInput(Location location, String packageName, String relativeName) throws IOException {
             FileObject o = fileObjects.get(uri(location, packageName, relativeName));
-            if (o != null)
-                return o;
+            if (o != null){            	
+            	return o;
+            }
             return super.getFileForInput(location, packageName, relativeName);
         }
 
@@ -246,8 +247,9 @@ public class JdkCompiler extends AbstractCompiler {
 
         @Override
         public String inferBinaryName(Location loc, JavaFileObject file) {
-            if (file instanceof JavaFileObjectImpl)
-                return file.getName();
+            if (file instanceof JavaFileObjectImpl){            	
+            	return file.getName();
+            }
             return super.inferBinaryName(loc, file);
         }
 
@@ -263,7 +265,7 @@ public class JdkCompiler extends AbstractCompiler {
                 urlList.add(e.nextElement());
             }
 
-            ArrayList<JavaFileObject> files = new ArrayList<JavaFileObject>();
+            List<JavaFileObject> files = new ArrayList<JavaFileObject>();
 
             if (location == StandardLocation.CLASS_PATH && kinds.contains(JavaFileObject.Kind.CLASS)) {
                 for (JavaFileObject file : fileObjects.values()) {
