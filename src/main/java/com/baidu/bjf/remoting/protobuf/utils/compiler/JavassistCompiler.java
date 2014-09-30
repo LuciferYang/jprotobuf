@@ -112,7 +112,7 @@ public class JavassistCompiler extends AbstractCompiler {
                 cls.addInterface(pool.get(ifaceClass));
             }
         }
-        String body = source.substring(source.indexOf("{") + 1,
+        String body = source.substring(source.indexOf('{') + 1,
                 source.length() - 1);
         String[] methods = METHODS_PATTERN.split(body);
         for (String method : methods) {
