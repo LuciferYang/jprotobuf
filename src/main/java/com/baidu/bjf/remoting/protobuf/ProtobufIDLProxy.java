@@ -124,8 +124,7 @@ public class ProtobufIDLProxy {
         }
         
         Codec codec = ProtobufProxy.create(cls);
-        IDLProxyObject idlProxyObject = new IDLProxyObject(codec, newInstance);
-        return idlProxyObject;
+        return new IDLProxyObject(codec, newInstance);
     }
 
     /**

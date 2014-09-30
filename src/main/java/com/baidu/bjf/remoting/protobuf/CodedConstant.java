@@ -39,8 +39,7 @@ public class CodedConstant {
      * @return field name
      */
     private static String getFieldName(int order) {
-        String fieldName = "f_" + order;
-        return fieldName;
+        return "f_" + order;
     }
     
     /**

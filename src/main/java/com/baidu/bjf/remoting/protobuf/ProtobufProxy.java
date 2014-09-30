@@ -64,8 +64,7 @@ public final class ProtobufProxy {
         
         if (c != null) {
             try {
-                Codec<T> newInstance = (Codec<T>) c.newInstance();
-                return newInstance;
+                return (Codec<T>) c.newInstance();
             } catch (InstantiationException e) {
                 throw new RuntimeException(e.getMessage(), e);
             } catch (IllegalAccessException e) {
